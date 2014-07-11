@@ -1,4 +1,4 @@
 devnotes
 ========
 
-Notes/tips/tricks/obscure hints related to software development.  
+The real info is in the wiki pages. 
