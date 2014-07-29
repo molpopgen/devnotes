@@ -10,7 +10,8 @@ int main(int argc, char ** argv)
 
   for( unsigned i = 1 ; i <= 50 ; i += 5 )
     {
-      function<double()> sampler = [i,&g](){ return poisson_distribution<unsigned>(double(i))(g); };
+      poisson_distribution<unsigned> p(i);
+      function<unsigned()> sampler = [&p,&g](){ return p(g); };
       vector<double> rv = sample( sampler );
     }
 }

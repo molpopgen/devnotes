@@ -14,3 +14,7 @@ all: gsl_base.o poisson_gsl.o poisson_cpp11.o gaussian_gsl.o gaussian_cpp11.o bi
 	$(CXX) $(CXXFLAGS) -o uniform_cpp11 uniform_cpp11.o
 	$(CXX) $(CXXFLAGS) -o discrete_gsl discrete_gsl.o gsl_base.o -lgsl -lgslcblas
 	$(CXX) $(CXXFLAGS) -o discrete_cpp11 discrete_cpp11.o
+
+clean:
+	rm -f *.o
+	find . -executable | tail -n +2 | xargs rm -f 

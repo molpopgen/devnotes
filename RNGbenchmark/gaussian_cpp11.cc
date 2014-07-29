@@ -10,7 +10,8 @@ int main(int argc, char ** argv)
 
   for( unsigned i = 1 ; i <= 50 ; i += 5 )
     {
-      function<double()> sampler = [i,&g](){ return normal_distribution<double>(double(i))(g); };
+      normal_distribution<double> gau(i);
+      function<double()> sampler = [&gau,&g](){ return gau(g); };
       vector<double> rv = sample( sampler );
     }
 }

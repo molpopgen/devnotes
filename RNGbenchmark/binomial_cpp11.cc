@@ -10,7 +10,8 @@ int main(int argc, char ** argv)
 
   for( unsigned i = 1 ; i <= 50 ; i += 5 )
     {
-      function<double()> sampler = [i,&g](){ return binomial_distribution<unsigned>(i,0.1)(g); };
+      binomial_distribution<unsigned> bn(i,0.1);
+      function<double()> sampler = [&bn,&g](){ return bn(g); };
       vector<double> rv = sample( sampler );
     }
 }
