@@ -10,7 +10,8 @@ int main(int argc, char ** argv)
 
   for( unsigned i = 1 ; i <= 50 ; i += 5 )
     {
-      function<double()> sampler = [i,&g](){ return uniform_real_distribution<double>(0.,double(i))(g); };
+      uniform_real_distribution<double> u(0.,double(i));
+      function<double()> sampler = [&u,&g](){ return u(g); };
       vector<double> rv = sample( sampler );
     }
 }
